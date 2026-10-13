@@ -20,7 +20,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font:1.0625rem/1.65 var(--text)}
 a{color:inherit;text-underline-offset:.2em}
-a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 p{max-width:62ch;margin:0 0 1rem}
 dt{font-size:.875rem;color:var(--muted)}
 dd{margin:0}
@@ -55,6 +55,7 @@ mark{background:var(--mark);color:var(--ink);padding:.05em .3em}
 
 .row{display:grid;grid-template-columns:11rem minmax(0,1fr);gap:1.5rem 3rem;padding:4rem 0;border-top:1px solid var(--rule)}
 .row>h2{font:600 1.25rem/1.2 var(--display);margin:0}
+.intro{color:var(--muted)}
 
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1.5rem 2rem;margin:0}
 .facts dd{font:700 1.75rem/1.2 var(--display)}
@@ -125,6 +126,22 @@ h3.sub{font:700 1.35rem/1.2 var(--display);margin:3rem 0 .5rem}
 .heads .h{font-weight:700;font-size:1.125rem;line-height:1.3}
 .heads .r{white-space:nowrap;font-variant-numeric:tabular-nums}
 
+/* Collapsible sections */
+details.more{border-top:1px solid var(--rule);margin-top:3rem}
+details.more summary{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;font:700 1.35rem/1.3 var(--display);padding:1.25rem 0;cursor:pointer;list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"+";font-weight:400}
+details.more[open] summary::after{content:"\2212"}
+details.more.small{margin-top:1.5rem}
+details.more.small summary{font-size:1.1rem;padding:1rem 0}
+.alt{margin:0 0 2rem}
+.alt h4{font:600 1.125rem/1.3 var(--display);margin:0 0 .25rem}
+.alt .label{font:600 .875rem/1.3 var(--display);color:var(--muted);margin:1rem 0 .5rem}
+.texts{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.texts li{background:var(--sheet);border:1px solid var(--rule);padding:.85rem 1rem;max-width:62ch}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.chips li{background:var(--sheet);border:1px solid var(--rule);padding:.4rem .75rem;font:600 .95rem/1.3 var(--display)}
+
 /* Google Ads page */
 .camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
 .camp{background:var(--sheet);border:1px solid var(--rule);padding:1.25rem}
@@ -132,12 +149,12 @@ h3.sub{font:700 1.35rem/1.2 var(--display);margin:3rem 0 .5rem}
 .camp .roas{font-size:1.75rem;margin-bottom:1rem}
 .camp .metrics{margin:0;padding:0;border:0}
 .scroll{overflow-x:auto}
-table{width:100%;min-width:33rem;border-collapse:collapse;font-family:var(--display);font-variant-numeric:tabular-nums;font-size:.95rem}
+table{width:100%;min-width:36rem;border-collapse:collapse;font-family:var(--display);font-variant-numeric:tabular-nums;font-size:.95rem}
 th,td{text-align:left;padding:.55rem .75rem .55rem 0;border-bottom:1px solid var(--rule)}
 thead th{font-weight:500;font-size:.8125rem;color:var(--muted)}
 tbody th{font-weight:600}
 .num{text-align:right;padding-right:0;padding-left:.75rem;white-space:nowrap}
-tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1rem}
+.none{color:var(--muted)}
 .kwgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem 2rem;margin:0}
 .kwgroups h4{font:600 1rem/1.3 var(--display);margin:0 0 .35rem}
 .kwgroups ul{margin:0;padding-left:1.1rem;font-family:var(--display);font-size:.95rem}
@@ -158,7 +175,8 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
 .certs .id{font-size:.8125rem;word-break:break-all}
 .certs .topics{color:var(--ink);margin-top:.6rem}
 
-.contact p.big{font:700 clamp(1.5rem,3.5vw,2.25rem)/1.2 var(--display);max-width:24ch;margin-bottom:1.5rem}
+.contact p.big{font:700 clamp(1.5rem,3.5vw,2.25rem)/1.2 var(--display);max-width:24ch;margin-bottom:1rem}
+.contact .phone{font:600 1.125rem/1.4 var(--display);margin-bottom:1rem}
 .contact .links{display:flex;flex-wrap:wrap;gap:.75rem 2rem;font-family:var(--display);font-size:1.125rem}
 .foot{padding-top:2rem;padding-bottom:3rem;border-top:1px solid var(--rule);color:var(--muted);font-size:.9rem}
 
@@ -404,6 +422,49 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
               <li><span class="h">PCOS? Weight loss is possible.</span></li>
             </ul>
           </div>
+
+          <details class="more">
+            <summary>Other angles tested</summary>
+            <p class="intro">More copy variations written for this client. Results aren't shown for these.</p>
+            <div class="alt">
+              <h4>Medical aesthetics and body contouring</h4>
+              <p class="label">Primary text</p>
+              <ul class="texts">
+                <li>Stubborn lower belly fat and love handles that won't budge, no matter how clean you eat or how hard you train, usually come down to localized fat cells that diet alone can't target. Our non-invasive body contouring protocols are designed to break down those exact pockets safely and permanently. Here's what a session looks like.</li>
+                <li>If you've been looking for a safe, non-surgical way to tighten lax skin and slim down specific areas without taking weeks off work or the gym, our targeted body shaping treatments deliver visible inch loss with zero downtime. Book a consultation at our <span class="bar" style="--w:8ch" role="img" aria-label="Location withheld"></span> clinics to map out your plan.</li>
+                <li>Most people spend months trying to spot-reduce fat with endless cardio, with very little to show for it. Our clinical body contouring targets stubborn fat layers directly, helping you drop inches where you actually want to. Tap below to see real patient timelines and package options.</li>
+                <li>Post-weight-loss skin laxity and stubborn fat pockets can be frustrating to deal with on your own. We combine advanced skin tightening with targeted fat reduction to restore firmness and contour your silhouette naturally. Send us a message to check current clinic availability.</li>
+                <li>Skipping the downtime of surgery doesn't mean compromising on results. Our non-invasive slimming treatments use medical-grade technology to break down fat cells while keeping surrounding tissue completely safe. Read through our case studies and book your initial assessment today.</li>
+              </ul>
+              <p class="label">Headlines</p>
+              <ul class="chips">
+                <li>Non-Invasive Body Contouring in <span class="bar" style="--w:3ch" role="img" aria-label="Location withheld"></span></li>
+                <li>Target Stubborn Fat Without Surgery</li>
+                <li>Clinical Slimming &amp; Skin Tightening</li>
+                <li>Book Your Consultation Today</li>
+                <li>Real Inches Lost, Zero Downtime</li>
+              </ul>
+            </div>
+            <div class="alt">
+              <h4>Medical weight loss and injectable protocols</h4>
+              <p class="label">Primary text</p>
+              <ul class="texts">
+                <li>Weight loss plateaus happen when your body's metabolic set point fights back against restrictive dieting. Our physician-guided medical weight loss protocols use clinically proven treatments to reset that response, control appetite naturally, and make sustainable fat loss achievable.</li>
+                <li>If traditional dieting and intense exercise haven't moved the scale in months, it's rarely a lack of discipline. It's usually an underlying metabolic or hormonal block. Our medical weight loss program pairs personalized injectable protocols with proper clinical oversight to help you break through.</li>
+                <li>Managing cravings and constant hunger is the hardest part of any fat loss phase. Our supervised weight loss treatments target appetite regulation at the biological level, making it easier to stick to a caloric deficit without feeling starved. Learn how our program works.</li>
+                <li>Sustainable weight loss requires more than a generic meal plan. Our medical team evaluates your health history, metabolic markers, and lifestyle to build a custom weight loss protocol designed for safe, steady results. Tap to schedule a consultation with our clinic.</li>
+                <li>Tired of crash diets that lead straight to weight regain? Our clinical weight loss program focuses on sustainable metabolic health, utilizing targeted treatments and medical supervision to keep the weight off long-term. Get all the details on our consultation page.</li>
+              </ul>
+              <p class="label">Headlines</p>
+              <ul class="chips">
+                <li>Physician-Guided Weight Loss</li>
+                <li>Break Your Weight Loss Plateau</li>
+                <li>Clinical Weight Loss Protocols</li>
+                <li>Schedule a Medical Consultation</li>
+                <li>Sustainable Fat Loss Solutions</li>
+              </ul>
+            </div>
+          </details>
         </div>
 
         <!-- CLIENT 2: dental clinic -->
@@ -520,6 +581,30 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
             <div><dt>Funnel</dt><dd>Paired each messaging angle with instant messaging (Click-to-Messenger or WhatsApp) and direct booking forms, with automated CRM confirmation messages to reduce lead drop-off.</dd></div>
             <div><dt>Services covered</dt><dd>Cosmetic aesthetics (whitening, veneers), surgical care (wisdom teeth), and low-barrier diagnostics (X-rays and checkups).</dd></div>
           </dl>
+
+          <details class="more">
+            <summary>Other angles tested</summary>
+            <p class="intro">More copy variations written for this client. Results aren't shown for these.</p>
+            <div class="alt">
+              <h4>Cosmetic and restorative dentistry</h4>
+              <p class="label">Primary text</p>
+              <ul class="texts">
+                <li>Hiding your smile in photos because of chipped, stained, or misaligned teeth can affect your confidence every single day. Our custom porcelain veneers are handcrafted to look entirely natural while giving you a complete, uniform smile transformation in just a few visits.</li>
+                <li>Missing teeth shouldn't make you second-guess speaking, laughing, or eating what you want. Dental implants offer a permanent, natural-looking replacement that fuses directly with your jawbone. Book a comprehensive dental consultation at our <span class="bar" style="--w:6ch" role="img" aria-label="Location withheld"></span> clinic.</li>
+                <li>If stubborn surface stains from coffee and tea aren't budging with regular toothpaste, professional chairside teeth whitening can lift years of discoloration in a single, safe session. Check our current clinic availability and book your slot.</li>
+                <li>Dealing with a throbbing toothache or a compromised tooth can throw off your entire week. Our team provides gentle, pain-free extractions and restorative treatments designed to get you out of pain quickly and safely. Contact us to schedule an urgent or routine checkup.</li>
+                <li>Investing in your smile is one of the few things that pays off every time you walk into a room. From subtle bonding and whitening to full smile makeovers with veneers, we map out every step before treatment begins. Send us a message to get started.</li>
+              </ul>
+              <p class="label">Headlines</p>
+              <ul class="chips">
+                <li>Custom Porcelain Veneers</li>
+                <li>Permanent Dental Implants</li>
+                <li>Professional Teeth Whitening</li>
+                <li>Pain-Free Dental Care</li>
+                <li>Book Your Smile Consultation</li>
+              </ul>
+            </div>
+          </details>
         </div>
 
         <!-- CLIENT 3: DTC supplement brand -->
@@ -639,6 +724,30 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
             <div><dt>Funnel</dt><dd>Benefit-driven hooks paired with optimized product landing pages, a streamlined checkout and subscription bundle incentives.</dd></div>
             <div><dt>Products covered</dt><dd>Daily wellness and stress (Ashwagandha), muscle and recovery (Magnesium), gut health and digestion (Pre + Probiotic), and active energy (L-Carnitine).</dd></div>
           </dl>
+
+          <details class="more">
+            <summary>Other angles tested</summary>
+            <p class="intro">More copy variations written for this client. Results aren't shown for these.</p>
+            <div class="alt">
+              <h4>Functional supplements</h4>
+              <p class="label">Primary text</p>
+              <ul class="texts">
+                <li>Waking up tired even after 8 hours of sleep usually points to depleted magnesium levels and unmanaged daily cortisol. Our high-absorption Magnesium Complex is formulated to calm your nervous system, support deep muscle recovery, and help you actually rest.</li>
+                <li>Brain fog, midday fatigue, and sluggish digestion often trace back to an unbalanced gut microbiome. Our daily Pre + Probiotic blend is engineered with clinically studied strains to restore gut health, clear up bloating, and support natural daily energy.</li>
+                <li>Daily stress keeps your body locked in a high-cortisol state, making fat loss and relaxation nearly impossible. Our clean Ashwagandha extract helps regulate stress response naturally, supporting better focus, balanced mood, and lower fatigue levels.</li>
+                <li>If you're looking to get more out of your workouts without relying on synthetic pre-workouts that leave you jittery, clean L-Carnitine helps your body utilize stored fat for energy during exercise. Add it to your morning routine or pre-training window.</li>
+                <li>Building a solid wellness routine shouldn't require taking ten different pills a day. We formulated our daily supplement essentials, from high-potency magnesium to clean gut health support, to target the root causes of daily fatigue, stress, and poor recovery.</li>
+              </ul>
+              <p class="label">Headlines</p>
+              <ul class="chips">
+                <li>Restore Deep Sleep &amp; Recovery</li>
+                <li>Clean Daily Gut Health Support</li>
+                <li>Manage Daily Stress Naturally</li>
+                <li>Premium Functional Supplements</li>
+                <li>Support Your Daily Wellness Routine</li>
+              </ul>
+            </div>
+          </details>
         </div>
 
       </div>
@@ -700,21 +809,55 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
 
     <section class="row" aria-labelledby="h-kw">
       <h2 id="h-kw">Keyword performance</h2>
-      <div class="scroll">
-        <table>
-          <thead><tr><th scope="col">Keyword</th><th scope="col">Match</th><th scope="col" class="num">Clicks</th><th scope="col" class="num">CTR</th><th scope="col" class="num">Avg. CPC</th><th scope="col" class="num">Cost per conv.</th></tr></thead>
-          <tbody>
-            <tr class="grp"><th scope="colgroup" colspan="6">High-intent treatment keywords</th></tr>
-            <tr><th scope="row">weight loss injection</th><td>Phrase</td><td class="num">43,040</td><td class="num">3.39%</td><td class="num">$0.54</td><td class="num">$35.61</td></tr>
-            <tr><th scope="row">doctor for weight loss</th><td>Phrase</td><td class="num">11,089</td><td class="num">6.63%</td><td class="num">$0.62</td><td class="num"><mark>$13.55</mark></td></tr>
-            <tr><th scope="row">body shaping treatment</th><td>Phrase</td><td class="num">15,876</td><td class="num">5.45%</td><td class="num">$0.46</td><td class="num"><mark>$13.53</mark></td></tr>
-            <tr class="grp"><th scope="colgroup" colspan="6">Body contouring and slimming keywords</th></tr>
-            <tr><th scope="row">slimming treatment</th><td>Phrase</td><td class="num">9,025</td><td class="num">5.04%</td><td class="num">$0.54</td><td class="num">$21.84</td></tr>
-            <tr><th scope="row">cosmetic fat removal</th><td>Broad</td><td class="num">10,013</td><td class="num">3.99%</td><td class="num">$0.35</td><td class="num">$16.42</td></tr>
-            <tr><th scope="row">lymphatic drainage massage</th><td>Broad</td><td class="num">5,621</td><td class="num">6.10%</td><td class="num">$0.37</td><td class="num">$42.47</td></tr>
-            <tr><th scope="row">body fat reduction</th><td>Phrase</td><td class="num">10,889</td><td class="num">4.53%</td><td class="num">$0.60</td><td class="num">$82.04</td></tr>
-          </tbody>
-        </table>
+      <div>
+        <p class="intro">Non-branded, non-location keywords from the body contouring ad group, sorted by conversions.</p>
+        <div class="scroll">
+          <table>
+            <thead><tr><th scope="col">Keyword</th><th scope="col">Match</th><th scope="col" class="num">Impr.</th><th scope="col" class="num">Clicks</th><th scope="col" class="num">CTR</th><th scope="col" class="num">Avg. CPC</th><th scope="col" class="num">Cost per conv.</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">body shaping treatment</th><td>Phrase</td><td class="num">15,878</td><td class="num">865</td><td class="num">5.45%</td><td class="num">$0.46</td><td class="num"><mark>$13.47</mark></td></tr>
+              <tr><th scope="row">slimming treatment</th><td>Phrase</td><td class="num">9,026</td><td class="num">455</td><td class="num">5.04%</td><td class="num">$0.54</td><td class="num">$21.71</td></tr>
+              <tr><th scope="row">weight management clinic</th><td>Broad</td><td class="num">4,835</td><td class="num">158</td><td class="num">3.27%</td><td class="num">$0.98</td><td class="num">$15.52</td></tr>
+              <tr><th scope="row">cosmetic fat removal</th><td>Broad</td><td class="num">10,014</td><td class="num">400</td><td class="num">3.99%</td><td class="num">$0.34</td><td class="num">$16.34</td></tr>
+              <tr><th scope="row">non-surgical body sculpting</th><td>Phrase</td><td class="num">3,920</td><td class="num">182</td><td class="num">4.64%</td><td class="num">$0.40</td><td class="num">$18.05</td></tr>
+              <tr><th scope="row">body fat reduction</th><td>Phrase</td><td class="num">10,890</td><td class="num">493</td><td class="num">4.53%</td><td class="num">$0.60</td><td class="num">$81.60</td></tr>
+              <tr><th scope="row">lymphatic drainage massage</th><td>Broad</td><td class="num">5,621</td><td class="num">343</td><td class="num">6.10%</td><td class="num">$0.37</td><td class="num">$42.25</td></tr>
+              <tr><th scope="row">fat removal</th><td>Phrase</td><td class="num">2,861</td><td class="num">191</td><td class="num">6.68%</td><td class="num">$0.33</td><td class="num">$20.74</td></tr>
+              <tr><th scope="row">best belly fat removal</th><td>Broad</td><td class="num">553</td><td class="num">72</td><td class="num">13.02%</td><td class="num">$0.34</td><td class="num"><mark>$8.12</mark></td></tr>
+              <tr><th scope="row">cosmetic procedures in your 30s</th><td>Broad</td><td class="num">4,235</td><td class="num">115</td><td class="num">2.72%</td><td class="num">$0.64</td><td class="num">$32.94</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="more small">
+          <summary>Show 19 more keywords</summary>
+          <div class="scroll">
+            <table>
+              <thead><tr><th scope="col">Keyword</th><th scope="col">Match</th><th scope="col" class="num">Impr.</th><th scope="col" class="num">Clicks</th><th scope="col" class="num">CTR</th><th scope="col" class="num">Avg. CPC</th><th scope="col" class="num">Cost per conv.</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">effective for slimming</th><td>Broad</td><td class="num">20,214</td><td class="num">343</td><td class="num">1.70%</td><td class="num">$0.64</td><td class="num">$109.07</td></tr>
+                <tr><th scope="row">the best way to lose belly fat</th><td>Phrase</td><td class="num">710</td><td class="num">40</td><td class="num">5.63%</td><td class="num">$0.42</td><td class="num">$8.36</td></tr>
+                <tr><th scope="row">ways to lose belly</th><td>Phrase</td><td class="num">1,146</td><td class="num">37</td><td class="num">3.23%</td><td class="num">$0.26</td><td class="num">$4.78</td></tr>
+                <tr><th scope="row">fat reduction</th><td>Broad</td><td class="num">20,538</td><td class="num">472</td><td class="num">2.30%</td><td class="num">$0.44</td><td class="num">$104.07</td></tr>
+                <tr><th scope="row">body contouring surgeon</th><td>Broad</td><td class="num">4,560</td><td class="num">227</td><td class="num">4.98%</td><td class="num">$0.48</td><td class="num">$72.48</td></tr>
+                <tr><th scope="row">body fat removal procedures</th><td>Phrase</td><td class="num">2,322</td><td class="num">102</td><td class="num">4.39%</td><td class="num">$0.44</td><td class="num">$29.60</td></tr>
+                <tr><th scope="row">fat reduction treatment</th><td>Broad</td><td class="num">11,928</td><td class="num">281</td><td class="num">2.36%</td><td class="num">$0.48</td><td class="num">$134.44</td></tr>
+                <tr><th scope="row">body fat removal</th><td>Phrase</td><td class="num">2,783</td><td class="num">147</td><td class="num">5.28%</td><td class="num">$0.41</td><td class="num">$60.02</td></tr>
+                <tr><th scope="row">lipo face</th><td>Broad</td><td class="num">543</td><td class="num">14</td><td class="num">2.58%</td><td class="num">$0.76</td><td class="num">$10.66</td></tr>
+                <tr><th scope="row">exion face</th><td>Broad</td><td class="num">1,409</td><td class="num">49</td><td class="num">3.48%</td><td class="num">$0.81</td><td class="num">$79.26</td></tr>
+                <tr><th scope="row">anti cellulite massage</th><td>Broad</td><td class="num">1,138</td><td class="num">48</td><td class="num">4.22%</td><td class="num">$0.29</td><td class="num">$28.10</td></tr>
+                <tr><th scope="row">body contouring</th><td>Phrase</td><td class="num">1,988</td><td class="num">98</td><td class="num">4.93%</td><td class="num">$0.40</td><td class="num none">No conversions</td></tr>
+                <tr><th scope="row">body sculpting</th><td>Broad</td><td class="num">2,811</td><td class="num">96</td><td class="num">3.42%</td><td class="num">$0.41</td><td class="num none">No conversions</td></tr>
+                <tr><th scope="row">cellulite massage</th><td>Phrase</td><td class="num">516</td><td class="num">84</td><td class="num">16.28%</td><td class="num">$0.14</td><td class="num none">No conversions</td></tr>
+                <tr><th scope="row">abdominal fat reduction</th><td>Phrase</td><td class="num">2,113</td><td class="num">69</td><td class="num">3.27%</td><td class="num">$0.44</td><td class="num none">No conversions</td></tr>
+                <tr><th scope="row">tummy fat removal</th><td>Broad</td><td class="num">500</td><td class="num">53</td><td class="num">10.60%</td><td class="num">$0.21</td><td class="num none">No conversions</td></tr>
+                <tr><th scope="row">ways to lose belly fat</th><td>Phrase</td><td class="num">680</td><td class="num">35</td><td class="num">5.15%</td><td class="num">$0.28</td><td class="num none">No conversions</td></tr>
+                <tr><th scope="row">belly fat reduction treatment</th><td>Broad</td><td class="num">688</td><td class="num">35</td><td class="num">5.09%</td><td class="num">$0.65</td><td class="num none">No conversions</td></tr>
+                <tr><th scope="row">best way to lose belly fat</th><td>Phrase</td><td class="num">1,008</td><td class="num">34</td><td class="num">3.37%</td><td class="num">$0.30</td><td class="num none">No conversions</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -730,8 +873,8 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
     <section class="row" aria-labelledby="h-mgmt">
       <h2 id="h-mgmt">Account management</h2>
       <dl class="notes">
-        <div><dt>Match types</dt><dd>Phrase match on high-intent queries reached click-through rates up to 6.63%, with broad match run selectively to find emerging search terms.</dd></div>
-        <div><dt>CPC and budget</dt><dd>Kept average cost per click between $0.35 and $0.62 through ongoing negative keyword management and Quality Score work.</dd></div>
+        <div><dt>Match types</dt><dd>Phrase match on high-intent treatment queries reached click-through rates up to 6.68%, with broad match run selectively to find emerging search terms.</dd></div>
+        <div><dt>CPC and budget</dt><dd>Average cost per click stayed under $1 across the body contouring keywords, mostly between $0.30 and $0.65, through ongoing negative keyword management and Quality Score work.</dd></div>
         <div><dt>Tracking and attribution</dt><dd>Set up custom conversion tracking across landing pages and CRM appointment systems to judge cost per acquisition against patient lifetime value.</dd></div>
       </dl>
     </section>
@@ -742,8 +885,11 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
     <h2 id="h-contact">Contact</h2>
     <div>
       <p class="big">Have an ad account that should be doing better?</p>
+      <p class="phone">WhatsApp and Viber: +63 976 096 0409</p>
       <p class="links">
         <a href="mailto:peraltallord@gmail.com">peraltallord@gmail.com</a>
+        <a href="https://wa.me/639760960409">Message on WhatsApp</a>
+        <a href="viber://chat?number=%2B639760960409">Message on Viber</a>
         <a href="https://www.linkedin.com/in/llord-christian-peralta">LinkedIn</a>
       </p>
     </div>
