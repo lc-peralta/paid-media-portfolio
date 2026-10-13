@@ -5,11 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="only light">
 <title>Llord Christian Peralta, paid media specialist</title>
-<meta name="description" content="Paid media specialist on Meta and Google Ads, with recent work for a wellness clinic, a dental clinic and a DTC supplement brand.">
+<meta name="description" content="Paid media specialist on Meta and Google Ads for aesthetics, wellness and direct-to-consumer e-commerce brands.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
-<!-- Direct links: portfolio.html#meta opens the Meta ads page, portfolio.html#google opens the Google Ads page. -->
 <style>
 :root{
   color-scheme:only light;
@@ -81,6 +80,13 @@ button{-webkit-appearance:none;appearance:none;font-family:var(--display);cursor
 .clients button{font-size:1.125rem;font-weight:700;padding:.65rem 1.1rem}
 .client-name{font:700 1.5rem/1.2 var(--display);margin:2.5rem 0 1rem}
 .js .client-name{display:none}
+
+/* Client results summary */
+.summary{background:var(--sheet);border:1px solid var(--rule);padding:1.5rem;margin-bottom:2rem}
+.summary h3{font:700 1.35rem/1.2 var(--display);margin:0 0 .2rem}
+.summary .period{font:600 .9375rem/1.3 var(--display);color:var(--muted);margin:0 0 .85rem}
+.summary .lead{color:var(--muted);margin-bottom:1.25rem}
+.summary .metrics{grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));margin:0;padding:0;border:0}
 
 .sample{display:grid;grid-template-columns:minmax(0,23rem) minmax(0,1fr);gap:1.5rem 2.5rem;align-items:start;margin-bottom:2.5rem}
 .js .sample{margin-bottom:0}
@@ -183,8 +189,8 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
   <div class="page" data-name="home">
 
     <section class="hero">
-      <h1>I run Meta ads for <span class="bar" style="--w:4.5ch" role="img" aria-label="a client I can't name"></span>, <span class="bar" style="--w:6.5ch" role="img" aria-label="another client I can't name"></span> and <span class="bar" style="--w:3.5ch" role="img" aria-label="a third client I can't name"></span>. The names are under NDA. The results aren't.</h1>
-      <p class="lede">I plan, write and manage campaigns on Meta and Google Ads, with recent work for a wellness clinic, a dental clinic and a direct-to-consumer supplement brand.</p>
+      <h1>Meta and Google Ads that turn ad spend into sales.</h1>
+      <p class="lede">I'm Llord, a paid media specialist. I plan, write and manage campaigns for aesthetics, wellness and direct-to-consumer e-commerce brands, from the first headline to the results report.</p>
       <p class="actions">
         <a class="btn" href="mailto:peraltallord@gmail.com">Email me about a project</a>
         <a href="#meta">Meta ads work</a>
@@ -244,7 +250,7 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
       <h2 id="h-kit">Tools</h2>
       <dl class="kit">
         <div><dt>Ad platforms</dt><dd>Meta Ads Manager, Google Ads</dd></div>
-        <div><dt>Tracking and reporting</dt><dd>Meta Pixel, Conversions API, Google Analytics 4, Google Tag Manager</dd></div>
+        <div><dt>Tracking and reporting</dt><dd>Meta Pixel, Conversions API, Google Analytics 4, Google Tag Manager, Looker Studio</dd></div>
       </dl>
     </section>
 
@@ -293,14 +299,13 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
       <h2 id="h-ads">Ad copy</h2>
       <div>
 
-        <!-- Client switcher. aria-controls must match the id of each client block below. -->
         <div class="tabs clients" role="tablist" aria-label="Clients">
           <button type="button" role="tab" id="tab-c1" aria-controls="client-1" aria-selected="true">Wellness clinic</button>
           <button type="button" role="tab" id="tab-c2" aria-controls="client-2" aria-selected="false">Dental clinic</button>
           <button type="button" role="tab" id="tab-c3" aria-controls="client-3" aria-selected="false">DTC supplement brand</button>
         </div>
 
-        <!-- CLIENT 1: wellness clinic. Program names are blacked out. -->
+        <!-- CLIENT 1: wellness clinic -->
         <div role="tabpanel" id="client-1" aria-labelledby="tab-c1">
           <h3 class="client-name">Wellness clinic</h3>
           <div class="tabs" role="tablist" aria-label="Wellness clinic ads">
@@ -401,9 +406,21 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
           </div>
         </div>
 
-        <!-- CLIENT 2: dental clinic. Set aria-pressed="true" on the headline that matches the one shown in each ad. -->
+        <!-- CLIENT 2: dental clinic -->
         <div role="tabpanel" id="client-2" aria-labelledby="tab-c2">
           <h3 class="client-name">Dental clinic</h3>
+
+          <div class="summary">
+            <h3>Results</h3>
+            <p class="period">May to Aug 2026</p>
+            <p class="lead">Booked consultations for cosmetic and restorative treatments through click-to-chat and instant-form booking flows, with automated CRM confirmations to reduce drop-off.</p>
+            <p class="roas"><mark>$8.50 to $14.00 per booked appointment</mark></p>
+            <dl class="metrics">
+              <div><dt>Click-through rate</dt><dd>4.2% to 5.8%</dd></div>
+              <div><dt>Landing page conversion rate</dt><dd>3.1%</dd></div>
+            </dl>
+          </div>
+
           <div class="tabs" role="tablist" aria-label="Dental clinic ads">
             <button type="button" role="tab" id="tab-d1" aria-controls="ad-d1" aria-selected="true">Whitening</button>
             <button type="button" role="tab" id="tab-d2" aria-controls="ad-d2" aria-selected="false">Wisdom tooth</button>
@@ -500,7 +517,7 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
 
           <h3 class="sub">Appointment strategy</h3>
           <dl class="notes">
-            <div><dt>Funnel</dt><dd>Paired each messaging angle with instant messaging (Click-to-Messenger or WhatsApp) and direct booking forms.</dd></div>
+            <div><dt>Funnel</dt><dd>Paired each messaging angle with instant messaging (Click-to-Messenger or WhatsApp) and direct booking forms, with automated CRM confirmation messages to reduce lead drop-off.</dd></div>
             <div><dt>Services covered</dt><dd>Cosmetic aesthetics (whitening, veneers), surgical care (wisdom teeth), and low-barrier diagnostics (X-rays and checkups).</dd></div>
           </dl>
         </div>
@@ -508,6 +525,19 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
         <!-- CLIENT 3: DTC supplement brand -->
         <div role="tabpanel" id="client-3" aria-labelledby="tab-c3">
           <h3 class="client-name">DTC supplement brand</h3>
+
+          <div class="summary">
+            <h3>Results</h3>
+            <p class="period">Jul to Sep 2026</p>
+            <p class="lead">Functional wellness supplement line sold direct to consumer, with a target of ROAS above 3.0x. Low-barrier single bottles acquired cold traffic, and multi-item bundles raised average order value.</p>
+            <p class="roas"><mark>3.4x to 4.1x blended ROAS</mark></p>
+            <dl class="metrics">
+              <div><dt>Cost per purchase, single bottle</dt><dd>$5.50 to $7.80</dd></div>
+              <div><dt>Cost per purchase, bundles</dt><dd>$14.20 to $21.50</dd></div>
+              <div><dt>Cold traffic conversion rate</dt><dd>2.3%</dd></div>
+            </dl>
+          </div>
+
           <div class="tabs" role="tablist" aria-label="DTC supplement brand ads">
             <button type="button" role="tab" id="tab-s1" aria-controls="ad-s1" aria-selected="true">Ashwagandha</button>
             <button type="button" role="tab" id="tab-s2" aria-controls="ad-s2" aria-selected="false">Magnesium</button>
@@ -605,7 +635,8 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
 
           <h3 class="sub">Acquisition strategy</h3>
           <dl class="notes">
-            <div><dt>Funnel</dt><dd>Paired benefit-driven hooks with direct checkout funnels and subscription bundle incentives to raise average order value.</dd></div>
+            <div><dt>Approach</dt><dd>Structured angle and offer testing. Low-barrier single bottles brought in cold traffic efficiently, and multi-item bundles raised average order value and overall return on ad spend.</dd></div>
+            <div><dt>Funnel</dt><dd>Benefit-driven hooks paired with optimized product landing pages, a streamlined checkout and subscription bundle incentives.</dd></div>
             <div><dt>Products covered</dt><dd>Daily wellness and stress (Ashwagandha), muscle and recovery (Magnesium), gut health and digestion (Pre + Probiotic), and active energy (L-Carnitine).</dd></div>
           </dl>
         </div>
@@ -629,6 +660,7 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
         <div><dt>Google Ads spend managed</dt><dd>$32K</dd></div>
         <div><dt>Accounts</dt><dd>2</dd></div>
         <div><dt>Channels</dt><dd>Search, PMax</dd></div>
+        <div><dt>Period</dt><dd>Jan to Jun 2026</dd></div>
       </dl>
     </section>
 
@@ -658,6 +690,14 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
       </div>
     </section>
 
+    <section class="row" aria-labelledby="h-unit">
+      <h2 id="h-unit">Unit economics</h2>
+      <dl class="notes">
+        <div><dt>High-ticket patient acquisition</dt><dd>Medical weight loss programs, injectable protocols and body contouring packages bring in high revenue per patient, so a cost per conversion under $25 leaves a wide profit margin.</dd></div>
+        <div><dt>Conversion efficiency</dt><dd>Routing intent-driven search traffic into structured consultation funnels returned more than 18x ROAS on both search campaigns.</dd></div>
+      </dl>
+    </section>
+
     <section class="row" aria-labelledby="h-kw">
       <h2 id="h-kw">Keyword performance</h2>
       <div class="scroll">
@@ -678,13 +718,11 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
       </div>
     </section>
 
-    <!-- Remove the dental and supplement groups below if those clients were not run on Google Ads. -->
     <section class="row" aria-labelledby="h-kwg">
       <h2 id="h-kwg">Keyword structure</h2>
       <div class="kwgroups">
         <div><h4>Medical weight loss and injectables</h4><ul><li>buy medical weight loss program online</li><li>doctor prescribed weight loss injections</li><li>clinically proven weight loss treatment</li><li>how to lose weight with insulin resistance</li></ul></div>
         <div><h4>Medical aesthetics and body contouring</h4><ul><li>non invasive fat freezing treatment</li><li>best body contouring packages</li><li>skin tightening and slimming center</li><li>post weight loss skin tightening</li></ul></div>
-        <div><h4>Dental lead generation</h4><ul><li>porcelain veneers consultation</li><li>teeth whitening clinic open today</li><li>pain free wisdom tooth removal</li><li>complete dental x-ray package</li></ul></div>
         <div><h4>DTC supplements</h4><ul><li>clinical grade ashwagandha supplement</li><li>high absorption magnesium complex</li><li>best pre and probiotic for bloating</li><li>clean l-carnitine liquid for workout</li></ul></div>
       </div>
     </section>
@@ -700,7 +738,6 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
 
   </div>
 
-  <!-- Contact shows on every page. Change your-cv.pdf to your CV's file name, or delete that line. -->
   <section class="row contact" id="contact" aria-labelledby="h-contact">
     <h2 id="h-contact">Contact</h2>
     <div>
@@ -708,7 +745,6 @@ tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1r
       <p class="links">
         <a href="mailto:peraltallord@gmail.com">peraltallord@gmail.com</a>
         <a href="https://www.linkedin.com/in/llord-christian-peralta">LinkedIn</a>
-        <a href="your-cv.pdf">Download my CV</a>
       </p>
     </div>
   </section>
