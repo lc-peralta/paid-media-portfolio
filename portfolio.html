@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
+<title>Llord Christian Peralta, paid media specialist</title>
+<meta name="description" content="Paid media specialist on Meta and Google Ads, with recent work for a wellness clinic, a dental clinic and a DTC supplement brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<!-- Direct links: portfolio.html#meta opens the Meta ads page, portfolio.html#google opens the Google Ads page. -->
+<style>
+:root{
+  color-scheme:only light;
+  --paper:#E6EAEE; --sheet:#FBFCFD; --ink:#17212F; --muted:#566273;
+  --rule:#C5CDD6; --mark:#9FE8C5; --bar:#000;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --text:"Source Serif 4",Georgia,serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.0625rem/1.65 var(--text)}
+a{color:inherit;text-underline-offset:.2em}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+p{max-width:62ch;margin:0 0 1rem}
+dt{font-size:.875rem;color:var(--muted)}
+dd{margin:0}
+.wrap{max-width:66rem;margin:0 auto;padding:0 1.5rem}
+
+/* Redaction bar. Set its length with --w. */
+.bar{display:inline-block;width:var(--w,6ch);height:.72em;background:var(--bar);border-radius:1px;vertical-align:-.02em}
+/* Highlight color. Change --mark above to recolor highlights and selected buttons. */
+mark{background:var(--mark);color:var(--ink);padding:.05em .3em}
+
+/* Header and page links */
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem 2rem;padding-top:1.25rem;padding-bottom:1.25rem;font-family:var(--display);border-bottom:1px solid var(--rule)}
+.top .name{font-weight:700;text-decoration:none}
+.top nav{display:flex;flex-wrap:wrap;gap:.25rem}
+.top nav a{text-decoration:none;padding:.3rem .7rem;border-radius:2px}
+.top nav a:hover{text-decoration:underline}
+.top nav a[aria-current=page]{background:var(--mark);font-weight:600;text-decoration:none}
+.page[hidden]{display:none}
+
+.hero{padding-top:4rem;padding-bottom:4rem}
+.hero h1{font:700 clamp(2.25rem,6.2vw,4.5rem)/1.06 var(--display);letter-spacing:-.02em;max-width:20ch;margin:0 0 2rem}
+.hero .lede{font-size:1.25rem;line-height:1.55;max-width:52ch}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;margin-top:2rem;font-family:var(--display)}
+.btn{display:inline-block;background:var(--ink) !important;color:#fff !important;-webkit-text-fill-color:#fff;padding:.7rem 1.25rem;border-radius:2px;font-weight:600;text-decoration:none}
+.btn:hover{background:#000 !important}
+.note{border-left:6px solid var(--bar);padding:.25rem 0 .25rem 1.25rem;margin-top:3.5rem;max-width:60ch;color:var(--muted)}
+.note strong{color:var(--ink)}
+
+.pagehead{padding:3.5rem 0 3rem}
+.pagehead h2{font:700 clamp(2rem,5vw,3.25rem)/1.08 var(--display);letter-spacing:-.02em;margin:0 0 1rem}
+.pagehead p{font-size:1.2rem;line-height:1.55;max-width:54ch;margin:0}
+
+.row{display:grid;grid-template-columns:11rem minmax(0,1fr);gap:1.5rem 3rem;padding:4rem 0;border-top:1px solid var(--rule)}
+.row>h2{font:600 1.25rem/1.2 var(--display);margin:0}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1.5rem 2rem;margin:0}
+.facts dd{font:700 1.75rem/1.2 var(--display)}
+
+/* Work cards on the home page */
+.work{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.card{display:block;background:var(--sheet);border:1px solid var(--rule);padding:1.5rem;text-decoration:none}
+.card:hover{border-color:var(--muted)}
+.card h3{font:700 1.5rem/1.2 var(--display);margin:0 0 .5rem}
+.card .stat{font:700 1.25rem/1.2 var(--display);margin:1rem 0}
+.card .go{font-family:var(--display);font-weight:600;text-decoration:underline;text-underline-offset:.2em;margin:0}
+
+/* Buttons: text is always dark, selected items use the highlight color */
+button{-webkit-appearance:none;appearance:none;font-family:var(--display);cursor:pointer;line-height:1.4;color:var(--ink) !important;-webkit-text-fill-color:var(--ink)}
+
+/* Switchers. Hidden until the script runs, so the page still works without it. */
+.tabs{display:none;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.js .tabs{display:flex}
+.tabs button{font-weight:600;font-size:1rem;padding:.5rem .95rem;border:1px solid var(--rule);border-radius:2px;background:var(--sheet) !important}
+.tabs button:hover{border-color:var(--muted)}
+.tabs button[aria-selected=true],.tabs button[aria-selected=true]:hover{background:var(--mark) !important;border-color:var(--mark)}
+.clients{margin-bottom:1rem}
+.clients button{font-size:1.125rem;font-weight:700;padding:.65rem 1.1rem}
+.client-name{font:700 1.5rem/1.2 var(--display);margin:2.5rem 0 1rem}
+.js .client-name{display:none}
+
+.sample{display:grid;grid-template-columns:minmax(0,23rem) minmax(0,1fr);gap:1.5rem 2.5rem;align-items:start;margin-bottom:2.5rem}
+.js .sample{margin-bottom:0}
+.sample[hidden]{display:none}
+.adunit{background:var(--sheet);border:1px solid var(--rule);font-family:var(--display);line-height:1.45}
+.adunit p{margin:0}
+.adunit .tag{font-size:.75rem;color:var(--muted);padding:0 1rem}
+.adunit .who{padding:1rem 1rem .75rem;font-weight:600}
+.adunit .who small{display:block;font-weight:400;font-size:.8125rem;color:var(--muted)}
+.adunit .body{padding:.15rem 1rem 1rem}
+.adunit .visual{background:#000 !important;padding:2.5rem 0 1rem}
+.adunit .visual .tag{color:#fff !important;-webkit-text-fill-color:#fff}
+.adunit .base{padding:.85rem 0 1rem}
+.adunit .hl{font-weight:700;font-size:1.125rem;line-height:1.25;padding:.15rem 1rem 0}
+.notes{display:grid;gap:1rem;margin:0}
+
+/* Metrics */
+.roas{font:700 2rem/1.1 var(--display);margin:0 0 1.25rem}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;margin:0 0 1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--rule)}
+.metrics dd{font:700 1.35rem/1.2 var(--display);font-variant-numeric:tabular-nums}
+
+/* Headline picker */
+.pick{grid-column:1/-1;border-top:1px solid var(--rule)}
+.pick p{font:600 1rem/1.3 var(--display);margin:1rem 0 .5rem}
+.pick button{display:block;width:100%;text-align:left;background:transparent !important;border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:.65rem .75rem;font-size:1rem;font-weight:600}
+.pick button:hover{background:var(--sheet) !important}
+.pick button[aria-pressed=true],.pick button[aria-pressed=true]:hover{background:var(--mark) !important}
+
+/* Headline angles */
+h3.sub{font:700 1.35rem/1.2 var(--display);margin:3rem 0 .5rem}
+.angle{border-top:1px solid var(--rule);padding:1.25rem 0 .5rem}
+.angle h4{font:600 1.125rem/1.3 var(--display);margin:0 0 .25rem}
+.angle .focus{color:var(--muted);margin:0 0 .85rem}
+.heads{list-style:none;margin:0;padding:0;font-family:var(--display)}
+.heads li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;background:var(--sheet);border:1px solid var(--rule);padding:.65rem .85rem;margin-top:-1px}
+.heads .h{font-weight:700;font-size:1.125rem;line-height:1.3}
+.heads .r{white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* Google Ads page */
+.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.camp{background:var(--sheet);border:1px solid var(--rule);padding:1.25rem}
+.camp h4{font:600 1.05rem/1.3 var(--display);margin:0 0 .75rem}
+.camp .roas{font-size:1.75rem;margin-bottom:1rem}
+.camp .metrics{margin:0;padding:0;border:0}
+.scroll{overflow-x:auto}
+table{width:100%;min-width:33rem;border-collapse:collapse;font-family:var(--display);font-variant-numeric:tabular-nums;font-size:.95rem}
+th,td{text-align:left;padding:.55rem .75rem .55rem 0;border-bottom:1px solid var(--rule)}
+thead th{font-weight:500;font-size:.8125rem;color:var(--muted)}
+tbody th{font-weight:600}
+.num{text-align:right;padding-right:0;padding-left:.75rem;white-space:nowrap}
+tr.grp th{font-size:.8125rem;font-weight:500;color:var(--muted);padding-top:1.1rem}
+.kwgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem 2rem;margin:0}
+.kwgroups h4{font:600 1rem/1.3 var(--display);margin:0 0 .35rem}
+.kwgroups ul{margin:0;padding-left:1.1rem;font-family:var(--display);font-size:.95rem}
+
+.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:1.5rem}
+.steps li{counter-increment:s;display:grid;grid-template-columns:2.75rem 1fr}
+.steps li::before{content:counter(s);font:700 1.5rem/1.2 var(--display)}
+.steps h3{font:600 1.125rem/1.35 var(--display);margin:0 0 .15rem}
+.steps p{margin:0}
+
+.kit{display:grid;gap:1.25rem;margin:0}
+.ways dt{font:600 1.125rem/1.35 var(--display);color:var(--ink)}
+.ways dd{max-width:58ch}
+
+.certs{list-style:none;margin:0;padding:0;display:grid;gap:1.35rem}
+.certs h3{font:600 1.125rem/1.35 var(--display);margin:0}
+.certs p{margin:.1rem 0 0;color:var(--muted)}
+.certs .id{font-size:.8125rem;word-break:break-all}
+.certs .topics{color:var(--ink);margin-top:.6rem}
+
+.contact p.big{font:700 clamp(1.5rem,3.5vw,2.25rem)/1.2 var(--display);max-width:24ch;margin-bottom:1.5rem}
+.contact .links{display:flex;flex-wrap:wrap;gap:.75rem 2rem;font-family:var(--display);font-size:1.125rem}
+.foot{padding-top:2rem;padding-bottom:3rem;border-top:1px solid var(--rule);color:var(--muted);font-size:.9rem}
+
+@media (max-width:46rem){
+  .row{grid-template-columns:minmax(0,1fr);padding:2.75rem 0}
+  .hero{padding-top:2.5rem;padding-bottom:2.5rem}
+  .pagehead{padding:2.5rem 0 2rem}
+  .sample{grid-template-columns:minmax(0,1fr)}
+  .clients button{padding:.6rem .8rem;font-size:1rem}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="name" href="#home">Llord Christian Peralta</a>
+  <nav aria-label="Pages">
+    <a href="#home" data-nav="home" aria-current="page">Home</a>
+    <a href="#meta" data-nav="meta">Meta ads</a>
+    <a href="#google" data-nav="google">Google Ads</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ PAGE: HOME ============ -->
+  <div class="page" data-name="home">
+
+    <section class="hero">
+      <h1>I run Meta ads for <span class="bar" style="--w:4.5ch" role="img" aria-label="a client I can't name"></span>, <span class="bar" style="--w:6.5ch" role="img" aria-label="another client I can't name"></span> and <span class="bar" style="--w:3.5ch" role="img" aria-label="a third client I can't name"></span>. The names are under NDA. The results aren't.</h1>
+      <p class="lede">I plan, write and manage campaigns on Meta and Google Ads, with recent work for a wellness clinic, a dental clinic and a direct-to-consumer supplement brand.</p>
+      <p class="actions">
+        <a class="btn" href="mailto:peraltallord@gmail.com">Email me about a project</a>
+        <a href="#meta">Meta ads work</a>
+        <a href="#google">Google Ads work</a>
+      </p>
+      <p class="note"><strong>How to read this site.</strong> Client names, program names and ad visuals are blacked out. The copy is from client campaigns. US dollar figures are converted and rounded.</p>
+    </section>
+
+    <section class="row" aria-labelledby="h-facts">
+      <h2 id="h-facts">At a glance</h2>
+      <dl class="facts">
+        <div><dt>Ad spend managed</dt><dd>$67K</dd></div>
+        <div><dt>Years on Meta ads</dt><dd>3</dd></div>
+        <div><dt>Years on Google Ads</dt><dd>3</dd></div>
+        <div><dt>Accounts managed</dt><dd>5</dd></div>
+      </dl>
+    </section>
+
+    <section class="row" aria-labelledby="h-work">
+      <h2 id="h-work">Work</h2>
+      <div class="work">
+        <a class="card" href="#meta">
+          <h3>Meta ads</h3>
+          <p>Ad copy, headline tests and results for a wellness clinic, a dental clinic and a DTC supplement brand.</p>
+          <p class="stat"><mark>Up to 13.85x ROAS</mark></p>
+          <p class="go">View Meta ads</p>
+        </a>
+        <a class="card" href="#google">
+          <h3>Google Ads</h3>
+          <p>Search campaigns, keyword performance and account structure for medical aesthetics and weight loss.</p>
+          <p class="stat"><mark>Up to 18.80x ROAS</mark></p>
+          <p class="go">View Google Ads</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="row" aria-labelledby="h-ways">
+      <h2 id="h-ways">Ways to work together</h2>
+      <dl class="kit ways">
+        <div><dt>Account audit</dt><dd>A one-off review of your tracking, structure and creative, delivered as a written plan.</dd></div>
+        <div><dt>Monthly management</dt><dd>I run the account end to end: strategy, copy, launches, testing and reporting.</dd></div>
+        <div><dt>Copy and creative strategy</dt><dd>Angles, hooks, primary text and headlines for your in-house team or agency to produce.</dd></div>
+      </dl>
+    </section>
+
+    <section class="row" aria-labelledby="h-method">
+      <h2 id="h-method">How I work</h2>
+      <ol class="steps">
+        <li><div><h3>Audit the account and the tracking</h3><p>Before touching budgets I check the pixel, the Conversions API and event match quality, then read recent data for where spend is leaking.</p></div></li>
+        <li><div><h3>Simplify the structure</h3><p>Fewer campaigns with enough budget each, so the algorithm gets clean signal and results are easier to read.</p></div></li>
+        <li><div><h3>Test angles and headlines</h3><p>Each offer gets several angles and headlines, so the data shows which message to put budget behind.</p></div></li>
+        <li><div><h3>Report in plain numbers</h3><p>What we spent, what it returned, what I'm changing next and why.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="row" aria-labelledby="h-kit">
+      <h2 id="h-kit">Tools</h2>
+      <dl class="kit">
+        <div><dt>Ad platforms</dt><dd>Meta Ads Manager, Google Ads</dd></div>
+        <div><dt>Tracking and reporting</dt><dd>Meta Pixel, Conversions API, Google Analytics 4, Google Tag Manager</dd></div>
+      </dl>
+    </section>
+
+    <section class="row" aria-labelledby="h-certs">
+      <h2 id="h-certs">Certifications</h2>
+      <ul class="certs">
+        <li>
+          <h3>Google Ads Search Certification</h3>
+          <p>Google Digital Academy (Skillshop). Issued Feb 2026, expires Feb 2027.</p>
+        </li>
+        <li>
+          <h3>The Ultimate Copywriting Course</h3>
+          <p>Udemy. Issued Mar 2025.</p>
+          <p class="id">Credential ID UC-bf5c3d62-5352-4d9d-9031-faa2b4d119ef</p>
+        </li>
+        <li>
+          <h3>Facebook Ads &amp; Facebook Marketing</h3>
+          <p>Udemy. Issued Jan 2025.</p>
+          <p class="id">Credential ID UC-64236106-5cb7-4589-8db3-893682daf75e</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="row" aria-labelledby="h-events">
+      <h2 id="h-events">Events</h2>
+      <ul class="certs">
+        <li>
+          <h3>eCommerce Expo | DMEXCO Asia 2025</h3>
+          <p>Attended. Part of Tech Week Singapore, Marina Bay Sands, 8 to 9 October 2025. The first Asian edition of DMEXCO, the European digital marketing and tech event.</p>
+          <p class="topics">Digital marketing programme topics closest to my work: automation and adtech, combining paid and organic to lower acquisition costs, generative AI in content creation, predictive analytics, hyper-personalisation, social and influencer marketing, and data privacy.</p>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- ============ PAGE: META ADS ============ -->
+  <div class="page" data-name="meta">
+
+    <div class="pagehead">
+      <h2>Meta ads</h2>
+      <p>Ad copy from client campaigns on Facebook and Instagram. The visuals belong to the clients, so they are withheld. Pick a client, then an ad.</p>
+    </div>
+
+    <section class="row" aria-labelledby="h-ads">
+      <h2 id="h-ads">Ad copy</h2>
+      <div>
+
+        <!-- Client switcher. aria-controls must match the id of each client block below. -->
+        <div class="tabs clients" role="tablist" aria-label="Clients">
+          <button type="button" role="tab" id="tab-c1" aria-controls="client-1" aria-selected="true">Wellness clinic</button>
+          <button type="button" role="tab" id="tab-c2" aria-controls="client-2" aria-selected="false">Dental clinic</button>
+          <button type="button" role="tab" id="tab-c3" aria-controls="client-3" aria-selected="false">DTC supplement brand</button>
+        </div>
+
+        <!-- CLIENT 1: wellness clinic. Program names are blacked out. -->
+        <div role="tabpanel" id="client-1" aria-labelledby="tab-c1">
+          <h3 class="client-name">Wellness clinic</h3>
+          <div class="tabs" role="tablist" aria-label="Wellness clinic ads">
+            <button type="button" role="tab" id="tab-w3" aria-controls="ad-w3" aria-selected="true">Seasonal</button>
+            <button type="button" role="tab" id="tab-w1" aria-controls="ad-w1" aria-selected="false">Transformation</button>
+            <button type="button" role="tab" id="tab-w2" aria-controls="ad-w2" aria-selected="false">Urgency</button>
+          </div>
+
+          <article class="sample" role="tabpanel" id="ad-w3" aria-labelledby="tab-w3">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:7ch" role="img" aria-label="Brand name withheld"></span> Wellness clinic<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Step into the season feeling lifted, refined, and ready for every celebration. Visible changes in as little as 2 weeks so you can glow with confidence from every angle. <span class="bar" style="--w:11ch" role="img" aria-label="Program name withheld"></span> is available for a limited time only. Book your slot today.</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+            </div>
+            <div>
+              <p class="roas"><mark>13.85x ROAS</mark></p>
+              <dl class="metrics">
+                <div><dt>Ad spend</dt><dd>$435</dd></div>
+                <div><dt>Website purchases</dt><dd>37</dd></div>
+                <div><dt>Cost per purchase</dt><dd>$11.77</dd></div>
+              </dl>
+              <dl class="notes">
+                <div><dt>Angle</dt><dd>Seasonal aesthetics and rapid confidence</dd></div>
+                <div><dt>Strategy</dt><dd>Seasonal urgency paired with fast-results hooks ("visible changes in 2 weeks", "limited time only") for medical aesthetics and slimming packages.</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="sample" role="tabpanel" id="ad-w1" aria-labelledby="tab-w1">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:7ch" role="img" aria-label="Brand name withheld"></span> Wellness clinic<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Most people never imagine losing over a quarter of their weight. Our program shows you how possible it can be. Online or in-clinic with free delivery nationwide.</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+            </div>
+            <div>
+              <p class="roas"><mark>7.86x ROAS</mark></p>
+              <dl class="metrics">
+                <div><dt>Ad spend</dt><dd>$994</dd></div>
+                <div><dt>Website purchases</dt><dd>64</dd></div>
+                <div><dt>Cost per purchase</dt><dd>$15.53</dd></div>
+                <div><dt>Cost per link click</dt><dd>$0.54</dd></div>
+              </dl>
+              <dl class="notes">
+                <div><dt>Angle</dt><dd>Transformation and accessibility</dd></div>
+                <div><dt>Ad set</dt><dd>Secondary</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="sample" role="tabpanel" id="ad-w2" aria-labelledby="tab-w2">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:7ch" role="img" aria-label="Brand name withheld"></span> Wellness clinic<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body"><span class="bar" style="--w:9ch" role="img" aria-label="Program name withheld"></span> is designed for real, lasting weight loss, up to 26%, through a proven combination of medical innovation and personalized support. Spots are filling fast. Reserve yours now.</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+            </div>
+            <div>
+              <p class="roas"><mark>6.83x ROAS</mark></p>
+              <dl class="metrics">
+                <div><dt>Ad spend</dt><dd>$750</dd></div>
+                <div><dt>Website purchases</dt><dd>88</dd></div>
+                <div><dt>Cost per purchase</dt><dd>$8.52</dd></div>
+                <div><dt>Cost per link click</dt><dd>$0.60</dd></div>
+              </dl>
+              <dl class="notes">
+                <div><dt>Angle</dt><dd>Clinical innovation and urgency</dd></div>
+                <div><dt>Ad set</dt><dd>Secondary</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <h3 class="sub">Headline angles tested</h3>
+          <p>Headlines from the clinic's weight loss campaigns, grouped by the angle each one tests.</p>
+          <div class="angle">
+            <h4>Authority and validation</h4>
+            <p class="focus">Targets frustrated audiences seeking a legitimate, medically backed solution rather than standard fad diets.</p>
+            <ul class="heads">
+              <li><span class="h">Weight loss done right</span><span class="r"><mark>215 results</mark></span></li>
+              <li><span class="h">Lose the right weight</span><span class="r">159 results</span></li>
+            </ul>
+          </div>
+          <div class="angle">
+            <h4>Brand identity and outcome</h4>
+            <p class="focus">Focuses on non-scale victories, emotional outcomes, and long-term lifestyle transformation.</p>
+            <ul class="heads">
+              <li><span class="h"><span class="bar" style="--w:5ch" role="img" aria-label="Program name withheld"></span> Your Confidence</span><span class="r">203 results</span></li>
+              <li><span class="h">Beyond the scale. With <span class="bar" style="--w:5ch" role="img" aria-label="Program name withheld"></span></span><span class="r">183 results</span></li>
+            </ul>
+          </div>
+          <div class="angle">
+            <h4>Specific condition, high intent</h4>
+            <p class="focus">Directly calls out sub-segments struggling with hormonal weight resistance to drive high relevance and CTR.</p>
+            <ul class="heads">
+              <li><span class="h">PCOS? Weight loss is possible.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CLIENT 2: dental clinic. Set aria-pressed="true" on the headline that matches the one shown in each ad. -->
+        <div role="tabpanel" id="client-2" aria-labelledby="tab-c2">
+          <h3 class="client-name">Dental clinic</h3>
+          <div class="tabs" role="tablist" aria-label="Dental clinic ads">
+            <button type="button" role="tab" id="tab-d1" aria-controls="ad-d1" aria-selected="true">Whitening</button>
+            <button type="button" role="tab" id="tab-d2" aria-controls="ad-d2" aria-selected="false">Wisdom tooth</button>
+            <button type="button" role="tab" id="tab-d3" aria-controls="ad-d3" aria-selected="false">Veneers</button>
+            <button type="button" role="tab" id="tab-d4" aria-controls="ad-d4" aria-selected="false">X-ray and checkup</button>
+          </div>
+
+          <article class="sample" role="tabpanel" id="ad-d1" aria-labelledby="tab-d1">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:6ch" role="img" aria-label="Brand name withheld"></span> Dental clinic<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Brighten your smile by up to 8 shades in just one session! Our painless, professional teeth whitening treatment removes years of stubborn stains safely. Book your whitening consultation today and step out with a brighter, more confident smile.</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+              <div class="base"><p class="tag">Headline</p><p class="hl" aria-live="polite">8 Shades Brighter in 1 Visit</p></div>
+            </div>
+            <dl class="notes">
+              <div><dt>Service</dt><dd>Teeth whitening</dd></div>
+              <div><dt>Angle</dt><dd>Cosmetic and immediate outcome</dd></div>
+              <div><dt>Funnel</dt><dd>Click-to-Messenger or WhatsApp and direct booking forms</dd></div>
+            </dl>
+            <div class="pick" role="group" aria-label="Headlines">
+              <p>Headlines. Pick one to see it in the ad.</p>
+              <button type="button" aria-pressed="true">8 Shades Brighter in 1 Visit</button>
+              <button type="button" aria-pressed="false">Painless Professional Whitening</button>
+              <button type="button" aria-pressed="false">Ready for a Brighter Smile?</button>
+            </div>
+          </article>
+
+          <article class="sample" role="tabpanel" id="ad-d2" aria-labelledby="tab-d2">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:6ch" role="img" aria-label="Brand name withheld"></span> Dental clinic<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Experiencing jaw pain, swelling, or crowding? Don't let impaction lead to severe discomfort or alignment issues. Our experienced dental team offers gentle, stress-free wisdom tooth removal with flexible payment plans. Schedule your evaluation today.</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+              <div class="base"><p class="tag">Headline</p><p class="hl" aria-live="polite">Gentle Wisdom Tooth Removal</p></div>
+            </div>
+            <dl class="notes">
+              <div><dt>Service</dt><dd>Wisdom tooth removal</dd></div>
+              <div><dt>Angle</dt><dd>Symptom-driven and relief</dd></div>
+              <div><dt>Approach</dt><dd>Focused on pain relief, gentle extraction techniques, and immediate booking availability.</dd></div>
+              <div><dt>Funnel</dt><dd>Click-to-Messenger or WhatsApp and direct booking forms</dd></div>
+            </dl>
+            <div class="pick" role="group" aria-label="Headlines">
+              <p>Headlines. Pick one to see it in the ad.</p>
+              <button type="button" aria-pressed="true">Gentle Wisdom Tooth Removal</button>
+              <button type="button" aria-pressed="false">Jaw Pain or Swelling? Book Now</button>
+              <button type="button" aria-pressed="false">Stress-Free Tooth Extraction</button>
+            </div>
+          </article>
+
+          <article class="sample" role="tabpanel" id="ad-d3" aria-labelledby="tab-d3">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:6ch" role="img" aria-label="Brand name withheld"></span> Dental clinic<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Transform your smile with custom, natural-looking veneers. Fix gaps, chips, and discoloration seamlessly with our personalized cosmetic design process. Limited monthly consultation slots available. Reserve yours today and get a preview of your dream smile.</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+              <div class="base"><p class="tag">Headline</p><p class="hl" aria-live="polite">Get Your Dream Smile Design</p></div>
+            </div>
+            <dl class="notes">
+              <div><dt>Service</dt><dd>Porcelain and composite veneers</dd></div>
+              <div><dt>Angle</dt><dd>High-ticket transformation</dd></div>
+              <div><dt>Approach</dt><dd>Positioned around visual transformations and smile design previews to drive qualified leads.</dd></div>
+              <div><dt>Funnel</dt><dd>Click-to-Messenger or WhatsApp and direct booking forms</dd></div>
+            </dl>
+            <div class="pick" role="group" aria-label="Headlines">
+              <p>Headlines. Pick one to see it in the ad.</p>
+              <button type="button" aria-pressed="true">Get Your Dream Smile Design</button>
+              <button type="button" aria-pressed="false">Seamless, Natural-Looking Veneers</button>
+              <button type="button" aria-pressed="false">Transform Your Smile Today</button>
+            </div>
+          </article>
+
+          <article class="sample" role="tabpanel" id="ad-d4" aria-labelledby="tab-d4">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:6ch" role="img" aria-label="Brand name withheld"></span> Dental clinic<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Catch hidden dental issues before they become costly emergencies. Get a full diagnostic dental X-ray and oral consultation for complete peace of mind. Book your diagnostic checkup slot today!</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+              <div class="base"><p class="tag">Headline</p><p class="hl" aria-live="polite">Complete Dental X-Ray &amp; Checkup</p></div>
+            </div>
+            <dl class="notes">
+              <div><dt>Service</dt><dd>Dental X-ray and comprehensive checkup</dd></div>
+              <div><dt>Angle</dt><dd>Lead magnet, low-barrier entry</dd></div>
+              <div><dt>Approach</dt><dd>Used diagnostic assessments to feed the clinic's long-term high-value treatment pipeline.</dd></div>
+              <div><dt>Funnel</dt><dd>Click-to-Messenger or WhatsApp and direct booking forms</dd></div>
+            </dl>
+            <div class="pick" role="group" aria-label="Headlines">
+              <p>Headlines. Pick one to see it in the ad.</p>
+              <button type="button" aria-pressed="true">Complete Dental X-Ray &amp; Checkup</button>
+              <button type="button" aria-pressed="false">Prevent Costly Dental Emergencies</button>
+              <button type="button" aria-pressed="false">Book Your Diagnostic Assessment</button>
+            </div>
+          </article>
+
+          <h3 class="sub">Appointment strategy</h3>
+          <dl class="notes">
+            <div><dt>Funnel</dt><dd>Paired each messaging angle with instant messaging (Click-to-Messenger or WhatsApp) and direct booking forms.</dd></div>
+            <div><dt>Services covered</dt><dd>Cosmetic aesthetics (whitening, veneers), surgical care (wisdom teeth), and low-barrier diagnostics (X-rays and checkups).</dd></div>
+          </dl>
+        </div>
+
+        <!-- CLIENT 3: DTC supplement brand -->
+        <div role="tabpanel" id="client-3" aria-labelledby="tab-c3">
+          <h3 class="client-name">DTC supplement brand</h3>
+          <div class="tabs" role="tablist" aria-label="DTC supplement brand ads">
+            <button type="button" role="tab" id="tab-s1" aria-controls="ad-s1" aria-selected="true">Ashwagandha</button>
+            <button type="button" role="tab" id="tab-s2" aria-controls="ad-s2" aria-selected="false">Magnesium</button>
+            <button type="button" role="tab" id="tab-s3" aria-controls="ad-s3" aria-selected="false">Pre + Probiotic</button>
+            <button type="button" role="tab" id="tab-s4" aria-controls="ad-s4" aria-selected="false">L-Carnitine</button>
+          </div>
+
+          <article class="sample" role="tabpanel" id="ad-s1" aria-labelledby="tab-s1">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:6ch" role="img" aria-label="Brand name withheld"></span> Supplements<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Constantly feeling overwhelmed or exhausted, but unable to wind down at night? Our clinical-grade Ashwagandha helps regulate elevated cortisol levels, promote calm focus during the day, and support deeper, restorative sleep. Experience natural stress balance. Order yours today with free nationwide shipping.</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+              <div class="base"><p class="tag">Headline</p><p class="hl" aria-live="polite">Lower Cortisol &amp; Natural Stress Balance</p></div>
+            </div>
+            <dl class="notes">
+              <div><dt>Product</dt><dd>Ashwagandha</dd></div>
+              <div><dt>Angle</dt><dd>Stress relief, cortisol and sleep balance</dd></div>
+              <div><dt>Approach</dt><dd>Pain-point and symptom hooks: directly addressed burnout and poor sleep to build high relevance.</dd></div>
+              <div><dt>Funnel</dt><dd>Direct checkout with subscription bundle incentives</dd></div>
+            </dl>
+            <div class="pick" role="group" aria-label="Headlines">
+              <p>Headlines. Pick one to see it in the ad.</p>
+              <button type="button" aria-pressed="true">Lower Cortisol &amp; Natural Stress Balance</button>
+              <button type="button" aria-pressed="false">Deep Restorative Sleep Starts Here</button>
+              <button type="button" aria-pressed="false">Calm Focus Without the Crash</button>
+            </div>
+          </article>
+
+          <article class="sample" role="tabpanel" id="ad-s2" aria-labelledby="tab-s2">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:6ch" role="img" aria-label="Brand name withheld"></span> Supplements<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Struggling with muscle cramps, restless legs, or brain fog? Most people don't get enough dietary magnesium for optimal recovery. Our high-absorption Magnesium Complex relaxes tight muscles, supports your nervous system, and helps you wake up feeling genuinely recharged. Shop now and save 15% on your first order.</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+              <div class="base"><p class="tag">Headline</p><p class="hl" aria-live="polite">High-Absorption Magnesium Complex</p></div>
+            </div>
+            <dl class="notes">
+              <div><dt>Product</dt><dd>Magnesium complex</dd></div>
+              <div><dt>Angle</dt><dd>Muscle recovery, sleep and nervous system</dd></div>
+              <div><dt>Approach</dt><dd>Pain-point and symptom hooks: directly addressed muscle soreness and poor sleep to build high relevance.</dd></div>
+              <div><dt>Funnel</dt><dd>Direct checkout with subscription bundle incentives</dd></div>
+            </dl>
+            <div class="pick" role="group" aria-label="Headlines">
+              <p>Headlines. Pick one to see it in the ad.</p>
+              <button type="button" aria-pressed="true">High-Absorption Magnesium Complex</button>
+              <button type="button" aria-pressed="false">Soothe Tight Muscles &amp; Restless Legs</button>
+              <button type="button" aria-pressed="false">Wake Up Truly Recharged</button>
+            </div>
+          </article>
+
+          <article class="sample" role="tabpanel" id="ad-s3" aria-labelledby="tab-s3">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:6ch" role="img" aria-label="Brand name withheld"></span> Supplements<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Say goodbye to post-meal bloating and heavy digestion. Our dual-action Pre + Probiotic delivers targeted active cultures to balance your gut microbiome, flatten stubborn bloating, and boost overall digestive energy. Feel light and comfortable after every meal. Try it risk-free today!</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+              <div class="base"><p class="tag">Headline</p><p class="hl" aria-live="polite">Beat Post-Meal Bloating Fast</p></div>
+            </div>
+            <dl class="notes">
+              <div><dt>Product</dt><dd>Pre + Probiotic</dd></div>
+              <div><dt>Angle</dt><dd>Gut health, bloating relief and digestion</dd></div>
+              <div><dt>Approach</dt><dd>Immediate physical benefit hooks: positioned fast-acting relief from bloating to capture high-intent searchers.</dd></div>
+              <div><dt>Funnel</dt><dd>Direct checkout with subscription bundle incentives</dd></div>
+            </dl>
+            <div class="pick" role="group" aria-label="Headlines">
+              <p>Headlines. Pick one to see it in the ad.</p>
+              <button type="button" aria-pressed="true">Beat Post-Meal Bloating Fast</button>
+              <button type="button" aria-pressed="false">Dual-Action Pre + Probiotic Balance</button>
+              <button type="button" aria-pressed="false">Support Your Gut Microbiome Today</button>
+            </div>
+          </article>
+
+          <article class="sample" role="tabpanel" id="ad-s4" aria-labelledby="tab-s4">
+            <div class="adunit">
+              <p class="who"><span class="bar" style="--w:6ch" role="img" aria-label="Brand name withheld"></span> Supplements<small>Sponsored</small></p>
+              <p class="tag">Primary text</p>
+              <p class="body">Unlock clean cellular energy without the jittery caffeine crash. L-Carnitine helps transport stored fatty acids directly into your cells to be burned as usable fuel during workouts and busy days. Accelerate your fitness results and stay energized. Claim your bottle now!</p>
+              <div class="visual"><p class="tag">Visual, withheld</p></div>
+              <div class="base"><p class="tag">Headline</p><p class="hl" aria-live="polite">Convert Stored Fat Into Usable Fuel</p></div>
+            </div>
+            <dl class="notes">
+              <div><dt>Product</dt><dd>L-Carnitine</dd></div>
+              <div><dt>Angle</dt><dd>Fat metabolism, energy and exercise performance</dd></div>
+              <div><dt>Approach</dt><dd>Performance and energy hooks: focused on clean fat-metabolism angles to target fitness enthusiasts.</dd></div>
+              <div><dt>Funnel</dt><dd>Direct checkout with subscription bundle incentives</dd></div>
+            </dl>
+            <div class="pick" role="group" aria-label="Headlines">
+              <p>Headlines. Pick one to see it in the ad.</p>
+              <button type="button" aria-pressed="true">Convert Stored Fat Into Usable Fuel</button>
+              <button type="button" aria-pressed="false">Clean Cellular Energy Without Jitters</button>
+              <button type="button" aria-pressed="false">Accelerate Your Workout Results</button>
+            </div>
+          </article>
+
+          <h3 class="sub">Acquisition strategy</h3>
+          <dl class="notes">
+            <div><dt>Funnel</dt><dd>Paired benefit-driven hooks with direct checkout funnels and subscription bundle incentives to raise average order value.</dd></div>
+            <div><dt>Products covered</dt><dd>Daily wellness and stress (Ashwagandha), muscle and recovery (Magnesium), gut health and digestion (Pre + Probiotic), and active energy (L-Carnitine).</dd></div>
+          </dl>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============ PAGE: GOOGLE ADS ============ -->
+  <div class="page" data-name="google">
+
+    <div class="pagehead">
+      <h2>Google Ads</h2>
+      <p>Search and Performance Max campaigns for high-ticket medical aesthetics, medical weight loss and body contouring. The goal was to capture high-intent search demand and turn it into qualified consultation leads at a low cost per acquisition.</p>
+    </div>
+
+    <section class="row" aria-labelledby="h-gfacts">
+      <h2 id="h-gfacts">At a glance</h2>
+      <dl class="facts">
+        <div><dt>Google Ads spend managed</dt><dd>$32K</dd></div>
+        <div><dt>Accounts</dt><dd>2</dd></div>
+        <div><dt>Channels</dt><dd>Search, PMax</dd></div>
+      </dl>
+    </section>
+
+    <section class="row" aria-labelledby="h-camps">
+      <h2 id="h-camps">Search campaigns</h2>
+      <div class="camps">
+        <div class="camp">
+          <h4>Slimming and body contouring</h4>
+          <p class="roas"><mark>18.44x ROAS</mark></p>
+          <dl class="metrics">
+            <div><dt>Cost per conversion</dt><dd>$15.11</dd></div>
+            <div><dt>Conversion rate</dt><dd>2.43%</dd></div>
+            <div><dt>Avg. CPC</dt><dd>$0.37</dd></div>
+            <div><dt>Clicks</dt><dd>18,191</dd></div>
+          </dl>
+        </div>
+        <div class="camp">
+          <h4>Medical weight loss</h4>
+          <p class="roas"><mark>18.80x ROAS</mark></p>
+          <dl class="metrics">
+            <div><dt>Cost per conversion</dt><dd>$22.13</dd></div>
+            <div><dt>Conversion rate</dt><dd>2.77%</dd></div>
+            <div><dt>Avg. CPC</dt><dd>$0.61</dd></div>
+            <div><dt>Clicks</dt><dd>9,946</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="row" aria-labelledby="h-kw">
+      <h2 id="h-kw">Keyword performance</h2>
+      <div class="scroll">
+        <table>
+          <thead><tr><th scope="col">Keyword</th><th scope="col">Match</th><th scope="col" class="num">Clicks</th><th scope="col" class="num">CTR</th><th scope="col" class="num">Avg. CPC</th><th scope="col" class="num">Cost per conv.</th></tr></thead>
+          <tbody>
+            <tr class="grp"><th scope="colgroup" colspan="6">High-intent treatment keywords</th></tr>
+            <tr><th scope="row">weight loss injection</th><td>Phrase</td><td class="num">43,040</td><td class="num">3.39%</td><td class="num">$0.54</td><td class="num">$35.61</td></tr>
+            <tr><th scope="row">doctor for weight loss</th><td>Phrase</td><td class="num">11,089</td><td class="num">6.63%</td><td class="num">$0.62</td><td class="num"><mark>$13.55</mark></td></tr>
+            <tr><th scope="row">body shaping treatment</th><td>Phrase</td><td class="num">15,876</td><td class="num">5.45%</td><td class="num">$0.46</td><td class="num"><mark>$13.53</mark></td></tr>
+            <tr class="grp"><th scope="colgroup" colspan="6">Body contouring and slimming keywords</th></tr>
+            <tr><th scope="row">slimming treatment</th><td>Phrase</td><td class="num">9,025</td><td class="num">5.04%</td><td class="num">$0.54</td><td class="num">$21.84</td></tr>
+            <tr><th scope="row">cosmetic fat removal</th><td>Broad</td><td class="num">10,013</td><td class="num">3.99%</td><td class="num">$0.35</td><td class="num">$16.42</td></tr>
+            <tr><th scope="row">lymphatic drainage massage</th><td>Broad</td><td class="num">5,621</td><td class="num">6.10%</td><td class="num">$0.37</td><td class="num">$42.47</td></tr>
+            <tr><th scope="row">body fat reduction</th><td>Phrase</td><td class="num">10,889</td><td class="num">4.53%</td><td class="num">$0.60</td><td class="num">$82.04</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Remove the dental and supplement groups below if those clients were not run on Google Ads. -->
+    <section class="row" aria-labelledby="h-kwg">
+      <h2 id="h-kwg">Keyword structure</h2>
+      <div class="kwgroups">
+        <div><h4>Medical weight loss and injectables</h4><ul><li>buy medical weight loss program online</li><li>doctor prescribed weight loss injections</li><li>clinically proven weight loss treatment</li><li>how to lose weight with insulin resistance</li></ul></div>
+        <div><h4>Medical aesthetics and body contouring</h4><ul><li>non invasive fat freezing treatment</li><li>best body contouring packages</li><li>skin tightening and slimming center</li><li>post weight loss skin tightening</li></ul></div>
+        <div><h4>Dental lead generation</h4><ul><li>porcelain veneers consultation</li><li>teeth whitening clinic open today</li><li>pain free wisdom tooth removal</li><li>complete dental x-ray package</li></ul></div>
+        <div><h4>DTC supplements</h4><ul><li>clinical grade ashwagandha supplement</li><li>high absorption magnesium complex</li><li>best pre and probiotic for bloating</li><li>clean l-carnitine liquid for workout</li></ul></div>
+      </div>
+    </section>
+
+    <section class="row" aria-labelledby="h-mgmt">
+      <h2 id="h-mgmt">Account management</h2>
+      <dl class="notes">
+        <div><dt>Match types</dt><dd>Phrase match on high-intent queries reached click-through rates up to 6.63%, with broad match run selectively to find emerging search terms.</dd></div>
+        <div><dt>CPC and budget</dt><dd>Kept average cost per click between $0.35 and $0.62 through ongoing negative keyword management and Quality Score work.</dd></div>
+        <div><dt>Tracking and attribution</dt><dd>Set up custom conversion tracking across landing pages and CRM appointment systems to judge cost per acquisition against patient lifetime value.</dd></div>
+      </dl>
+    </section>
+
+  </div>
+
+  <!-- Contact shows on every page. Change your-cv.pdf to your CV's file name, or delete that line. -->
+  <section class="row contact" id="contact" aria-labelledby="h-contact">
+    <h2 id="h-contact">Contact</h2>
+    <div>
+      <p class="big">Have an ad account that should be doing better?</p>
+      <p class="links">
+        <a href="mailto:peraltallord@gmail.com">peraltallord@gmail.com</a>
+        <a href="https://www.linkedin.com/in/llord-christian-peralta">LinkedIn</a>
+        <a href="your-cv.pdf">Download my CV</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap foot">
+  <p>© 2026 Llord Christian Peralta. Client names, program names and ad visuals are withheld.</p>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+
+  // Pages: the link's #home, #meta or #google decides which page shows
+  var pages=Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var navs=Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+  var names=pages.map(function(p){return p.getAttribute('data-name');});
+  var current='home';
+  function go(name,toTop){
+    current=name;
+    pages.forEach(function(p){p.hidden=p.getAttribute('data-name')!==name;});
+    navs.forEach(function(a){
+      if(a.getAttribute('data-nav')===name)a.setAttribute('aria-current','page');
+      else a.removeAttribute('aria-current');
+    });
+    if(toTop)window.scrollTo(0,0);
+  }
+  function route(toTop){
+    var h=location.hash.replace('#','');
+    if(names.indexOf(h)>=0)go(h,toTop);
+    else go(current,false);
+  }
+  window.addEventListener('hashchange',function(){route(true);});
+  route(false);
+
+  // Switchers: the client row and each client's ad row work independently
+  Array.prototype.forEach.call(document.querySelectorAll('[role=tablist]'),function(list){
+    var tabs=Array.prototype.slice.call(list.children).filter(function(el){return el.getAttribute('role')==='tab';});
+    function show(i,focus){
+      tabs.forEach(function(t,n){
+        var on=n===i;
+        t.setAttribute('aria-selected',on?'true':'false');
+        t.tabIndex=on?0:-1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+      });
+      if(focus)tabs[i].focus();
+    }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){show(i);});
+      t.addEventListener('keydown',function(e){
+        if(e.key==='ArrowRight')show((i+1)%tabs.length,true);
+        if(e.key==='ArrowLeft')show((i-1+tabs.length)%tabs.length,true);
+      });
+    });
+    if(tabs.length)show(0);
+  });
+
+  // Headline picker: clicking a headline puts it into that ad
+  Array.prototype.forEach.call(document.querySelectorAll('.pick'),function(g){
+    var hl=g.closest('.sample').querySelector('.hl');
+    var btns=Array.prototype.slice.call(g.querySelectorAll('button'));
+    btns.forEach(function(b){
+      b.addEventListener('click',function(){
+        btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+        hl.textContent=b.textContent;
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
